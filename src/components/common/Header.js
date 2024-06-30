@@ -79,6 +79,7 @@ const HeaderNew = () => {
             <Link to="/" className="app_logo">
               <Image src={logo} alt="logo" fluid />
               IGNANT CITY BRIDGE | ease it in, ease it out
+              <Image src="./gifs/safe-papa.gif" fluid />
             </Link>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
