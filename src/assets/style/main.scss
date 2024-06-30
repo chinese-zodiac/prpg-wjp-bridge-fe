@@ -274,14 +274,8 @@ input[type=number] {
 
 .welcome-img {
     max-width: 100%;
-    display:none;
+    display:block;
 }
-@media (min-width:600px) {
-    .welcome-img {
-        display:block;
-    }
-}
-
 img {
     max-width: 100%;
     margin-left:auto;
