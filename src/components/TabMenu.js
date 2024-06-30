@@ -5,7 +5,7 @@ const TabMenu = () => {
   const location = useLocation();
   return (
     <>
-      <Image src="./welcome-sign1.svg" className="welcome-img" />
+      <Image src="./gifs/bridge-stunt.gif" className="welcome-img" />
       <ul>
         <li>
           <Link

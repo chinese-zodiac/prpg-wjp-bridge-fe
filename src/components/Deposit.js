@@ -191,6 +191,10 @@ const Deposit = () => {
     <>
       <div className="bridge_wrap">
         <TabMenu />
+        <p className="white">
+          Ease it in across the bridge, shake your assets, get playin <br />
+        </p>
+
         <section className="deposit_wrap">
           <div className="deposit_price_wrap">
             <div className="deposit_price_title">
@@ -331,7 +335,13 @@ const Deposit = () => {
                     <span className="visually-hidden">Loading...</span>
                   </Spinner>
                 ) : (
-                  "Deposit"
+                  <>
+                    <Image src="./gifs/street-race.gif" />
+                    <Image src="./gifs/street-race.gif" />
+                    Deposit
+                    <Image src="./gifs/street-race.gif" />
+                    <Image src="./gifs/street-race.gif" />
+                  </>
                 )}{" "}
               </button>
             )}

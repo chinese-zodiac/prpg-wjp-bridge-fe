@@ -4,9 +4,11 @@ import "../../assets/style/common/footer.scss";
 import { BsDiscord } from "react-icons/bs";
 import { AiFillLinkedin, AiFillTwitterCircle } from "react-icons/ai";
 import { FaFacebook, FaTelegram, FaTelegramPlane } from "react-icons/fa";
+import { Image } from "react-bootstrap";
 const Footer = () => {
   return (
     <>
+      <Image src="./gifs/city-lapse.gif" className="welcome-img" />
       <footer className="app_footer">
         {/* <Container fluid> */}
         <div className="footer_text_wrap">
