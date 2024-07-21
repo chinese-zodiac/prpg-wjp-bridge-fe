@@ -11,6 +11,7 @@ import { configureChains } from "@wagmi/core";
 import { bsc, opBNB } from "@wagmi/core/chains";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
+import { WalletConnectConnector } from '@wagmi/core/connectors/walletConnect';
 
 const { chains, publicClient } = configureChains(
   [bsc, opBNB],
@@ -28,10 +29,20 @@ export const connectors = [
       shimDisconnect: false,
     },
   }),
+  new WalletConnectConnector({
+	  chains,
+	options: {
+      qrcode: true,
+      projectId: '26aaf07ce7840e8a9c7b1666ddc90549',
+	  
+	  
+    },
+  }),
 ];
 
 const config = createConfig({
   autoConnect: true,
+  chains,
   connectors,
   storage: createStorage({ storage: window.localStorage }),
   publicClient,
@@ -43,7 +54,6 @@ root.render(
     <Provider store={store}>
       <App />
     </Provider>
-    ,
   </WagmiConfig>
 );
 reportWebVitals();

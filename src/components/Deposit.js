@@ -190,7 +190,7 @@ const Deposit = () => {
   return (
     <>
       <div className="bridge_wrap">
-        <TabMenu />
+        <TabMenu gif="./gifs/bridge-stunt.gif" />
         <p className="white">
           Ease it in across the bridge, shake your assets, get playin <br />
         </p>

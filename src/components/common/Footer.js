@@ -8,7 +8,20 @@ import { Image } from "react-bootstrap";
 const Footer = () => {
   return (
     <>
+	  <div className="footertop">
       <Image src="./gifs/city-lapse.gif" className="welcome-img" />
+	  <Image src="./gifs/footer-video.gif" className="welcome-img" />
+	  <Image src="./gifs/footer-video1.gif" className="welcome-img" />
+	  
+	  <Image src="./gifs/footer-video2.gif" className="welcome-img" />
+	  <Image src="./gifs/footer-video3.gif" className="welcome-img" />
+	  <Image src="./gifs/footer-video4.gif" className="welcome-img" />
+	  
+	  <Image src="./gifs/footer-video5.gif" className="welcome-img" />
+	  <Image src="./gifs/footer-video6.gif" className="welcome-img" />
+	  <Image src="./gifs/footer-video7.gif" className="welcome-img" />
+	 
+	  </div>
       <footer className="app_footer">
         {/* <Container fluid> */}
         <div className="footer_text_wrap">

@@ -6,7 +6,7 @@ body {
     padding: 0px;
     line-height: 1.7;
     font-weight: 400;
-    background-color: rgb(192, 196, 204) !important;
+    background-color: rgb(223 234 255) !important;
     font-family: 'Walter Turncoat', cursive;
 }
 
@@ -15,7 +15,7 @@ body {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: 'Walter Turncoat', cursive;
+    /*font-family: 'Walter Turncoat', cursive;*/
 }
 
 ol,
@@ -31,7 +31,7 @@ h6,
 p {
     margin: 0px;
     padding: 0px;
-    font-family: 'Walter Turncoat', cursive;
+    font-family: sans-serif;
 }
 
 
@@ -261,15 +261,6 @@ input[type=number] {
     margin-right:auto;
     min-height:600px;
     max-width:1200px;
-    /*
-    backgroundSize: 'cover',
-    backgroundPositionX: 'center',
-    backgroundRepeat: 'no-repeat',
-    padding: '5px',
-    minHeight: '600px',
-    maxWidth: '1200px',
-    marginLeft: 'auto',
-    marginRight: 'auto',*/
 }
 
 .welcome-img {
@@ -280,4 +271,19 @@ img {
     max-width: 100%;
     margin-left:auto;
     margin-right:auto;
+}
+.bridge_wrap .welcome-img{ width:100%; margin-bottom:15px;}
+.footertop{ max-width:100%; width:1200px; margin:0px auto; overflow-x: hidden;padding:12px; text-align:center;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+}
+.footertop img {
+    width: 370px;
+    float: left;
+    margin: 20px;
+    height: 230px;
+    border: 2px solid #fff;
+    padding: 9px;
+    background: #fff;
 }

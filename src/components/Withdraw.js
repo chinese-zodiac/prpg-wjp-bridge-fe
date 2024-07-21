@@ -249,7 +249,7 @@ const Withdraw = () => {
   return (
     <>
       <div className="bridge_wrap">
-        <TabMenu />
+        <TabMenu gif="./gifs/bridge-stunt---.gif" />
         <section className="deposit_wrap">
           <div className="withdraw_title_wrap">
             <div className="withdraw_title_icn">

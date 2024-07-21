@@ -27,6 +27,7 @@ const WithdrawAccount = () => {
   const { chain } = useNetwork();
   const { switchNetwork } = useSwitchNetwork();
   const { blocksScanned, setBlocksScanned } = useState(0);
+
   const getCrossChain = async () => {
     const l2Url = String(process.env.REACT_APP_L2_RPC_URL);
     const l1Provider = new ethers.providers.Web3Provider(
@@ -315,6 +316,18 @@ const WithdrawAccount = () => {
                 need to sign a proof here. Second, the proof will enter a 7 day
                 challeng period. Third, after that period ends, you can claim
                 your tokens on BSC mainnet.
+                <br />
+                <b>
+                  NOTICE: IF YOUR PROOFS DO NOT APPEAR. USE{" "}
+                  <a
+                    className="white"
+                    target="_blank"
+                    href="https://opbnb-bridge.bnbchain.org/"
+                  >
+                    🔗opbnb-bridge.bnbchain.org
+                  </a>{" "}
+                  TO FINALIZE.
+                </b>
               </p>
             </section>
             <section className="account_withdraw_table">

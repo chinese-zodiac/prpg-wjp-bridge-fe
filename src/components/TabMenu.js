@@ -1,11 +1,11 @@
 import React from "react";
 import { Image } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-const TabMenu = () => {
+const TabMenu = ({ gif }) => {
   const location = useLocation();
   return (
     <>
-      <Image src="./gifs/bridge-stunt.gif" className="welcome-img" />
+      <Image src={gif} className="welcome-img" />
       <ul>
         <li>
           <Link

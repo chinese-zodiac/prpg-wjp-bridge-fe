@@ -10,9 +10,10 @@ import {
   Tooltip,
 } from "react-bootstrap";
 import logo from "../../assets/images/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAccount, useConnect, useNetwork } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
+import { WalletConnectConnector } from "@wagmi/core/connectors/walletConnect";
 import { disconnect } from "@wagmi/core";
 import { FaEthereum } from "react-icons/fa";
 import { BiInfoCircle, BiPowerOff } from "react-icons/bi";
@@ -20,17 +21,22 @@ import { MdContentCopy } from "react-icons/md";
 import { AiOutlineDownload, AiOutlineUpload } from "react-icons/ai";
 import metamask from "../../assets/images/metamask.svg";
 // import { BiPowerOff } from "react-icons/bi"
+import { bsc, opBNB } from "@wagmi/core/chains";
 import { useDisconnect } from "wagmi";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+
 const HeaderNew = () => {
+  const navigate = useNavigate();
   const [copyTextSourceCode, setCopyTextSourceCode] = useState(
     "Copy address to clipboard"
   );
   const { address, isConnected } = useAccount();
   const [getNetwork, setNetwork] = useState();
   const [checkMetaMask, setCheckMetaMask] = useState("");
+  const [walletType, setWalletType] = useState("MetaMask");
   const { chain, chains } = useNetwork();
-  const { connect } = useConnect({
+
+  const { connect: connectInjected } = useConnect({
     connector: new InjectedConnector({ chains }),
     onMutate(args) {
       console.log("Mutate", args);
@@ -47,13 +53,38 @@ const HeaderNew = () => {
       console.log("Success", data);
     },
   });
+
+  const { connect: connectWalletConnect } = useConnect({
+    connector: new WalletConnectConnector({
+		chains:[bsc, opBNB],
+      options: {
+        qrcode: true, 
+        projectId: '26aaf07ce7840e8a9c7b1666ddc90549',
+		Chain: bsc
+      },
+    }),
+  });
+
+  const handleConnect = (type) => {
+    setWalletType(type);
+    if (type === "MetaMask") {
+      connectInjected();
+    } else if (type === "WalletConnect") {
+      connectWalletConnect();
+    }
+  };
+
   const handleDisconnect = async () => {
     await disconnect();
+    navigate('/');
+	window.location.reload(); // Reload the page after navigation
   };
+
   useEffect(() => {
     if (
-      chain?.id == process.env.REACT_APP_L1_CHAIN_ID ||
-      chain?.id == process.env.REACT_APP_L2_CHAIN_ID
+      chain &&
+      (chain?.id == process.env.REACT_APP_L1_CHAIN_ID ||
+        chain?.id == process.env.REACT_APP_L2_CHAIN_ID)
     ) {
       setNetwork(chain.name);
       console.log(chain.name);
@@ -61,16 +92,19 @@ const HeaderNew = () => {
       setNetwork("Unsupported Network");
     }
   }, [chain]);
+
   const handleSourceCopy = () => {
     if (copyTextSourceCode === "Copy address to clipboard") {
       setCopyTextSourceCode("Copied.");
     }
   };
+
   const renderTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
       {copyTextSourceCode}
     </Tooltip>
   );
+
   return (
     <>
       <header className="app_header">
@@ -169,12 +203,20 @@ const HeaderNew = () => {
                       </Dropdown.Menu>
                     </Dropdown>
                   ) : (
-                    <button
-                      onClick={() => connect()}
-                      className="btn disconnect_btn header_btn"
-                    >
-                      Connect Wallet
-                    </button>
+                    <>
+                      <button
+                        onClick={() => handleConnect("MetaMask")}
+                        className="btn disconnect_btn header_btn"
+                      >
+                        Connect MetaMask
+                      </button>
+                      <button
+                        onClick={() => handleConnect("WalletConnect")}
+                        className="btn disconnect_btn header_btn"
+                      >
+                        Connect WalletConnect
+                      </button>
+                    </>
                   )}
                 </div>
               </div>
